@@ -1,9 +1,9 @@
-@function base-font-size-calc($current-font-family: $base-font-family) {
-   @return if ($current-font-family == $base-font-family-serif, $base-font-size * 1.15, $base-font-size);
+@function base-font-sizes-calc($current-font-family: $base-font-family) {
+   @return if($current-font-family == $base-font-family-serif, $base-font-size * 1.15, $base-font-size);
 }
 
-@function base-heading-sizes-calc($heading: 2) {
-   $h4-font-size: base-font-size-calc();
+@function base-heading-sizes-calc($heading: 2, $font-family: $base-headings-font-family) {
+   $h4-font-size: base-font-sizes-calc($font-family);
    $h1-font-size: $h4-font-size * 2;
    $h2-font-size: $h1-font-size / 1.3333;
    $h3-font-size: $h2-font-size / 1.2821;
@@ -13,4 +13,17 @@
    $headings: ($h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, $h5-font-size, $h6-font-size);
 
    @return nth($headings, $heading);
+}
+
+@function base-heading-line-height($heading: 2, $font-family: $base-headings-font-family) {
+   $h1-line-height: base-heading-sizes-calc(2, $font-family);
+   $h2-line-height: base-heading-sizes-calc(3, $font-family);
+   $h3-line-height: base-heading-sizes-calc(4, $font-family);
+   $h4-line-height: base-heading-sizes-calc(5, $font-family);
+   $h5-line-height: base-heading-sizes-calc(6, $font-family);
+   $h6-line-height: base-heading-sizes-calc(6, $font-family) / $h1-line-height;
+
+   $line-heights: ($h1-line-height, $h2-line-height, $h3-line-height, $h4-line-height, $h5-line-height, $h6-line-height);
+
+   @return nth($line-heights, $heading);
 }

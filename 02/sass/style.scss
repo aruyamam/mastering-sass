@@ -52,3 +52,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @include base-headings;
+
+.test-debug {
+   @debug base-font-sizes-calc($base-headings-font-family);
+}
+
+.test-data-types {
+   content: base-heading-sizes-calc(0, $base-headings-font-family);
+}

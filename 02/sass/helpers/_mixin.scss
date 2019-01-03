@@ -12,6 +12,8 @@
 } 
 
 @mixin base-headings {
+   @warn "Please use @include mstarting-sass-base-headings() instaed of @include base-headings(). @mixin base-headings() will be deprecated in version 2.";
+
    $i: 1;
 
    @each $heading, $family in $base-headings {

@@ -1,0 +1,26 @@
+h2 {
+   color: #000;
+}
+
+.product {
+   padding: 1em;
+}
+
+.product-image {
+   float: left;
+   margin-right: 1em;
+}
+
+.product-title {
+   margin-top: 0;
+}
+
+.product-title-link {
+   text-decoration: none;
+   color: inherit;
+}
+
+.product-sale {
+   margin-left: 1em;
+   opacity: 0.5;
+}

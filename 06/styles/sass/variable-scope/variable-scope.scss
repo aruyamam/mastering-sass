@@ -1,0 +1,58 @@
+$bg-color: hsl(0, 50%, 75%);
+
+@function bg-color() {
+   $bg-color: red !global;
+   @return $bg-color;
+}
+
+@function set-color() {
+   @if lightness($bg-color) > 50% {
+      @return black;
+   }
+   @else {
+      @return white;
+   }
+}
+
+@mixin colors() {
+   background-color: $bg-color;
+   color: set-color();
+}
+
+%square {
+   width: 100px;
+   height: 100px;
+   line-height: 100px;
+   float: left;
+   text-align: center;
+}
+
+.square1 {
+   @extend %square;
+   background-color: $bg-color;
+}
+
+.square2 {
+   @extend %square;
+   @include colors;
+   background-color: bg-color();
+}
+
+.square3 {
+   $bg-color: orange;
+   @extend %square;
+   background-color: $bg-color;
+}
+
+.square4 {
+   $bg-color: blue !global;
+   @extend %square;
+   @include colors;
+   background-color: bg-color();
+}
+
+.square5 {
+   @extend %square;
+   @include colors;
+   background-color: bg-color();
+}

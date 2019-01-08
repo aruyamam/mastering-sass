@@ -1,0 +1,37 @@
+$map: (
+   font: (
+      family: Arial,
+      size: 2em,
+      weight: bold
+   ),
+   text: (
+      decoration: none,
+      transform: uppercase,
+      align: center
+   )
+);
+
+$deepList: (
+   a1: "a1 string",
+   a2: (
+      b1: 20px,
+      b2: (
+         c: (
+            d: 1
+         )
+      )
+   )
+);
+
+@function get($map, $arglist...) {
+   $m: $map;
+   @each $item in $arglist {
+      $m: map-get($m, $item);
+   }
+
+   @return $m;
+}
+
+$newmap: get($deepList, a2, b2, c, d);
+
+@debug $newmap;

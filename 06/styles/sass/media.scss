@@ -1,9 +1,11 @@
-$small: 480px;
-$medium: 768px;
-$large: 980px;
+$breakpoints: (
+   small: 480px,
+   medium: 768px,
+   large: 980px
+);
 
 @mixin media($size) {
-   @media (min-width: $size) {
+   @media (min-width: map-get($breakpoints, $size)) {
       @content;
    }
 }
@@ -22,20 +24,20 @@ $large: 980px;
 
 @mixin breakpoint($size) {
    @include media($size) {
-      max-width: $size;
+      max-width: map-get($breakpoints, $size);
       background-color: #000;
       color: #fff;
    }
 }
 
 .small {
-   @include breakpoint($small)
+   @include breakpoint(small)
 }
 
 .medium {
-   @include breakpoint($medium)
+   @include breakpoint(medium)
 }
 
 .large {
-   @include breakpoint($large)
+   @include breakpoint(large)
 }

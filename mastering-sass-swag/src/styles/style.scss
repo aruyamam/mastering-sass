@@ -1,3 +1,20 @@
+$default-breakpoint: medium;
+$breakpoints: (
+  small: 480px,
+  medium: 768px,
+  large: 980px
+);
+
+@import './helpers/all';
+
+body {
+  background-color: red;
+
+  @include bp {
+    background-color: green;
+  }
+}
+
 h1,
 h2,
 p {

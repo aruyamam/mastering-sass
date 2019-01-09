@@ -1,0 +1,8 @@
+@mixin hover-link {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

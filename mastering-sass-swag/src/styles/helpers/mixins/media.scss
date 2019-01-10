@@ -1,0 +1,99 @@
+// Mixin for creating the media-container. Simply adds padding andd a clearfix.
+@mixin media-container($spacing: 1em) {
+  padding: $spacing;
+  overflow: hidden;
+}
+
+// Mixin for creating thhe media-image.
+@mixin media-image($img-align: left, $spacing: 1em) {
+  display: block;
+  float: $img-align;
+
+  @if ($img-align == unquote(right)) {
+    margin-left: $spacing;
+  }
+
+  @else if ($img-align == unquote(left)) {
+    margin-right: $spacing;
+  }
+
+  @else {
+    margin: 0 auto;
+  }
+}
+
+// Mixin for creating the media-title and link style. Userful if we need to modify the defaults for more control
+@mixin media-title(
+  $color: black,
+  $link-color: inherit,
+  $link-hover-color: inherit,
+  $text-transform: uppercase
+) {
+  margin-top: 0;
+  text-transform: $text-transform;
+  color: $color;
+
+  a {
+    @include hover-link;
+
+    color: $link-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+}
+
+// Mixin fro creating the media-button. Userful if we need to modify the defaults for more control
+@mixin media-button(
+  $img-align: left,
+  $spacing: 1em,
+  $background-color: black,
+  $text-color: white,
+  $border-width: 1px,
+  $text-transform: uppercase
+) {
+  padding: ($spacing * 0.25) ($spacing * 0.5);
+  text-transform: $text-transform;
+  text-decoration: none;
+  color: $text-color;
+  background-color: $background-color;
+  border: $border-width solid transparent;
+
+  @if ($img-align == ungquote(none)) {
+    float: none;
+  }
+
+  @else if ($img-align == unquote(left) or $img-align == unquote(right)) {
+    float: if($img-align == left, right, left);
+  }
+
+  @else {
+    @warn 'First parameter of `media-button` mixin must be `left` or `right`. `#{$img-align}` given.';
+  }
+
+  &:hover {
+    color: $background-color;
+    background: transparent;
+    border: $border-width solid;
+  }
+}
+
+// --------------------------
+// MEDIA COMPONENT
+// --------------------------
+@mixin media($img-align: left, $spacing: 1em, $color: black) {
+  @include media-container($spacing);
+
+  &-image {
+    @include media-image($img-align, $spacing);
+  }
+
+  &-title {
+    @include media-title($color);
+  }
+
+  &-button {
+    @include media-button($img-align, $spacing, $color);
+  }
+}

@@ -6,6 +6,7 @@ $breakpoints: (
 );
 
 @import './helpers/all';
+@import '~normalize.css';
 
 body {
   background-color: red;

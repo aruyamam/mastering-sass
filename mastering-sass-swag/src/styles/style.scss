@@ -5,7 +5,12 @@ $breakpoints: (
   large: 980px
 );
 
+$grid: (
+  max-width: 1160px
+);
+
 @import './helpers/all';
 @import '~normalize.css';
 @import 'base/global';
 @import 'base/typography.scss';
+@import 'layout/grid.scss';

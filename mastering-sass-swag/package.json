@@ -33,6 +33,7 @@
    },
    "dependencies": {
       "@babel/polyfill": "^7.2.5",
+      "ionicons": "^4.5.1",
       "normalize.css": "^8.0.1"
    }
 }

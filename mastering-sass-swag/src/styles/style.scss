@@ -9,12 +9,12 @@ $grid: (
   max-width: 1160px
 );
 
-$ionicons-font-path: 'fonts/ionicons';
+$ionicons-font-path: '~ionicons/dist/fonts';
 
 @import './helpers/all';
 @import '~normalize.css';
 @import 'base/global';
-@import 'base/typography.scss';
-@import 'layout/grid.scss';
-@import '~ionicons/dist/scss/ionicons-icons';
-@import '~ionicons/dist/scss/ionicons-variables';
+@import 'base/typography';
+@import 'layout/grid';
+@import 'components/top-nav';
+
